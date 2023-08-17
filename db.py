@@ -67,4 +67,15 @@ except:
             else:
                 print("Wrong choice")
 
-        
+        def delete_task(deleted_task_id):
+            cursor.execute(
+                'Delete from tasks where id = ?', (deleted_task_id,))
+            task_db.commit()
+            print("Task deleted successfully!")
+
+        def list_tasks():
+            if cursor.execute('select * from tasks'):
+                rows = cursor.fetchall()
+                for row in rows:
+                    print(row)
+            print("There are no tasks! ")
