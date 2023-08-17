@@ -34,7 +34,6 @@ except:
                            )
             task_db.commit()
             print("Task added successfully!")
-            # task_db.close()
 
         def list_names_of_tasks():
             cursor.execute('select * from tasks')
@@ -47,25 +46,27 @@ except:
             if info_to_update == "1":
                 cursor.execute(
                     'Update tasks set name = ? where id = ?', (new_data, task_id))
-                task_db.commit()
-                print("Task updated successfully")
+                print("Task updated successfully! ")
+
             elif info_to_update == "2":
                 cursor.execute(
                     'Update tasks set description = ? where id = ?', (new_data, task_id))
-                task_db.commit()
-                print("Task updated successfully")
+                print("Task updated successfully! ")
+
             elif info_to_update == "3":
                 cursor.execute(
                     'Update tasks set deadline = ? where id = ?', (new_data, task_id))
-                task_db.commit()
-                print("Task updated successfully")
+                print("Task updated successfully! ")
+
             elif info_to_update == "4":
                 cursor.execute(
                     'Update tasks set is_done = ? where id = ?', (new_data, task_id))
-                task_db.commit()
-                print("Task updated successfully")
+                print("Task updated successfully! ")
+
             else:
                 print("Wrong choice")
+
+            task_db.commit()
 
         def delete_task(deleted_task_id):
             cursor.execute(
