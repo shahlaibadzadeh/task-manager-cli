@@ -1,4 +1,5 @@
 import db
+import datetime
 
 if __name__ == "__main__":
     print("Welcome!", "Choose one option from the list: ", "1. Add task",
@@ -7,18 +8,16 @@ if __name__ == "__main__":
     user_input = input("Enter your option: ")
 
     if user_input == "1":
-        task_name = input("Enter task name: ")
-        task_description = input("Enter task description: ")
-        task_deadline = input("Enter task deadline: ")
-        task_created_at = input("Enter date task created: ")
-        task_updated_at = input("Enter date task updated: ")
-        task_is_done = input("Enter the status of task: ")
-        
+        while True:
+            task_name = input("Enter task name: ")
+            task_description = input("Enter task description: ")
+            task_deadline = input("Enter task deadline (YYYY-MM-DD): ")
+            task_created_at = datetime.datetime.now()
+            task_updated_at = datetime.datetime.now()
+            is_done = input("Enter the status of task (0 or 1): ")
+            db.Db_manager(task_name, task_description, task_deadline,
+                          task_created_at, task_updated_at, is_done).add_task()
+            if input("Add another task? Y/N: ").lower() == "n":
+                break
 
-        
-
-    elif user_input == "2":
-        print("Which information do you want to update?", "1. Name", "2. Description", "3. Deadline", "4. Task Status", sep="\n")
-        info_to_update = input("Enter your option: ")
-        # if info_to_update == "1":
-            
+  
